@@ -68,7 +68,6 @@ const Template = (props) => {
                           className={"is-half-mobile"}
                           style={{
                             textAlign:'center',
-                            paddingTop:'8vh',
                             verticalAlign:'middle',
                             cursor:'pointer', 
                             marginRight:index===0?10:'auto',
@@ -77,7 +76,6 @@ const Template = (props) => {
                             width:'20vh',
                             color:'yellow', 
                             backgroundColor: index===0?variables.orange:variables.pink,
-                            zIndex:1000
                           }} 
                           onClick={()=>handleClick(index)}
                         >
