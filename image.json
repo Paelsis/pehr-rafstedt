@@ -1,0 +1,212 @@
+[
+    {
+        "originalName":"02-IMG_7424",
+        "name": "2020-002",
+        "price": "100 euro",
+        "size": "42x29"
+    },
+    {
+        "originalName":"03-IMG_7425",
+        "name": "2020-003",
+        "price": "100 euro",
+        "size": "42 x 29 cm."
+    },
+    {
+        "originalName":"04-IMG_7426",
+        "name": "2020-004",
+        "price": "130 euro",
+        "size": "38x49 cm."
+    },
+    {
+        "originalName":"05-IMG_7428",
+        "name": "2020-005",
+        "price": "130 euro",
+        "size": "41 x 59 cm."
+    },
+    {
+        "originalName":"06-IMG_7438",
+        "name": "2020-006",
+        "price": "Privat",
+        "size": "57,5 x 42,5 cm."
+    },
+    {
+        "originalName":"07-IMG_7427",
+        "name": "2020-007",
+        "price": "130 euro",
+        "size": "59 x 42 cm."
+    },
+    {
+        "originalName":"08-IMG_7433",
+        "name": "2020-008",
+        "price": "130 euro",
+        "size": "41 x 59 cm."
+    },
+    {
+        "originalName":"09-IMG_7430",
+        "name": "2020-009",
+        "price": "130 euro",
+        "size": "59 x 42 cm."
+    },
+    {
+        "originalName":"11-IMG_7429",
+        "name": "2020-011",
+        "price": "130 euro",
+        "size": "41,5 x 59,5cm."
+    },
+    {
+        "originalName":"12-IMG_7432",
+        "name": "2020-012",
+        "price": "130 euro",
+        "size": "41,5 x 59,5 cm."
+    },
+    {
+        "originalName":"13-IMG_7435",
+        "name": "2020-013",
+        "price": "130 euro",
+        "size": "41 x 50 cm."
+    },
+    {
+        "originalName":"14-IMG_7434",
+        "name": "2020-014",
+        "price": "130 euro",
+        "size": "45 x 41,5 cm."
+    },
+    {
+        "originalName":"15-IMG_7436",
+        "name": "2020-015",
+        "price": "130 euro",
+        "size": "45 x 41,5 cm."
+    },
+    {
+        "originalName":"16-IMG_7431",
+        "name": "2020-016",
+        "price": "130 euro",
+        "size": "41,5 x 59 cm."
+    },
+    {
+        "originalName":"17-IMG_7442",
+        "name": "2020-017",
+        "price": "130 euro",
+        "size": "59 x42 cm."
+    },
+    {
+        "originalName":"18-IMG_7437",
+        "name": "2020-018",
+        "price": "130 euro",
+        "size": "42,5 x 59,5 cm."
+    },
+    {
+        "originalName":"19-IMG_7444",
+        "name": "2020-019",
+        "price": "130 euro",
+        "size": "59 x 42,5 cm."
+    },
+    {
+        "originalName":"20-IMG_7439",
+        "name": "2020-020",
+        "price": "130 euro",
+        "size": "58 x 42 cm."
+    },
+    {
+        "originalName":"21-IMG_7446",
+        "name": "2020-021",
+        "price": "130 euro",
+        "size": "59 x 42,5 cm."
+    },
+    {
+        "originalName":"22-IMG_7441",
+        "name": "2020-022",
+        "price": "130 euro",
+        "size": "59 x 42,5 cm."
+    },
+    {
+        "originalName":"23-IMG_7448",
+        "name": "2020-023",
+        "price": "130 euro",
+        "size": "48 x 39,5 cm."
+    },
+    {
+        "originalName":"24-IMG_7443", 
+        "name": "2020-024",
+        "price": "130 euro",
+        "size": "59 x42 cm."
+    },
+    {
+        "originalName":"25-IMG_7450",
+        "name": "2020-025",
+        "price": "120 euro",
+        "size": "48 x 39 cm."
+    },
+    {
+        "originalName":"26-IMG_7445",
+        "name": "2020-026",
+        "price": "130 euro",
+        "size": "59 x 42 cm."
+    },
+    {
+        "originalName":"27-IMG_7452",
+        "name": "2020-027",
+        "price": "120 euro",
+        "size": "47,5 x 39,5 cm."
+    },
+    {
+        "originalName":"28-IMG_7447",
+        "name": "2020-028",
+        "price": "130 euro",
+        "size": "47,5 x 39 cm."
+    },
+    {
+        "originalName":"29-IMG_7454",
+        "name": "2020-029",
+        "price": "120 euro",
+        "size": "47,5 x 39 cm."
+    },
+    {
+        "originalName":"30-IMG_7449",
+        "name": "2020-030",
+        "price": "120 euro",
+        "size": "47,5 x 39,5 cm."
+    },
+    {
+        "originalName":"31-IMG_7451",
+        "name": "2020-031",
+        "price": "120 euro",
+        "size": "48,5 x 39,5 cm. "
+    },
+    {
+        "originalName":"32-IMG_7456",
+        "name": "2020-032",
+        "price": "120 euro",
+        "size": "47,5 c 38,5 cm."
+    },
+    {
+        "originalName":"33-IMG_7458",
+        "name": "2020-033",
+        "price": "120 euro",
+        "size": "47,5 x 39,5 cm."
+    },
+    {
+        "originalName":"34-IMG_7455",
+        "name": "2020-034",
+        "price": "120 euro",
+        "size": "47,5 x 39 cm. "
+    },
+    {
+        "originalName":"35-IMG_7460",
+        "name": "2020-035",
+        "price": "140 euro",
+        "size": "67 x 39 cm."
+    },
+    {
+        "originalName":"36-IMG_7457",
+        "name": "2020-036",
+        "price": "120 euro",
+        "size": "47,5 x 39 cm."
+    },
+    {
+        "originalName":"37-IMG_7459",
+        "name": "2020-037",
+        "price": "120 euro",
+        "size": "47,5 x 39 cm."
+    }
+]
