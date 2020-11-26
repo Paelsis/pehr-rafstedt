@@ -67,11 +67,12 @@ const Template = (props) => {
                         <div 
                           className={"is-half-mobile"}
                           style={{
+                            paddingTop:'8vh',
                             textAlign:'center',
                             verticalAlign:'middle',
                             cursor:'pointer', 
-                            marginRight:index===0?10:'auto',
-                            marginLeft:index===0?'auto':10,
+                            marginRight:index===0?10:undefined,
+                            marginLeft:index===0?undefined:10,
                             height:'20vh', 
                             width:'20vh',
                             color:'yellow', 
@@ -79,7 +80,8 @@ const Template = (props) => {
                           }} 
                           onClick={()=>handleClick(index)}
                         >
-                          <h4>{it.node.fluid.originalName}</h4>
+                          <h2>{it.node.fluid.originalName}</h2>
+                          <h4>Index : {index}</h4>
                         </div>
                       )}
                   </div>
