@@ -9,7 +9,7 @@ import { useTheme } from "@material-ui/core"
 
 
 const backgroundColor="#FF7034"
-const REMOTE_FILE='images.json'
+const REMOTE_FILE='rafstedt.json'
 
 const CLASS_NAME = {
   SMALL:{
