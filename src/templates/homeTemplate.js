@@ -39,6 +39,10 @@ const Template = (props) => {
   // console.log('startIndex reset', startIndex)
   const handleMouseEnter = (index) => setHover({...hover, [index]:true})
   const handleMouseLeave = (index) => setHover({...hover, [index]:undefined})
+  const backgroundColor1 = variables.orange
+  const backgroundColor2 = variables.bubblegumPink
+  const color1 = variables.bblack
+  const color2 = variables.nblack
   const handleClick = (index) => {
       switch(index) {
         case 0:navigate('/history')
@@ -69,7 +73,7 @@ const Template = (props) => {
                   <div className="columns is-mobile is-multiline is-centered is-vcentered" style={{height:'100vh'}} >
                   {data.allImageSharp.edges.map((it, index)=>
                         <div 
-                          className={"is-half-mobile"}
+                          className={"is-6-mobile"}
                           style={{
                             paddingTop:'8vh',
                             textAlign:'center',
@@ -79,8 +83,8 @@ const Template = (props) => {
                             marginLeft:index===0?undefined:10,
                             height:'20vh', 
                             width:'20vh',
-                            color:'yellow', 
-                            backgroundColor: index===0?variables.orange:variables.bubblegumPink,
+                            color:index===0?color1:color2,
+                            backgroundColor: index===0?backgroundColor1:backgroundColor2,
                           }} 
                           onClick={()=>handleClick(index)}
                         >
