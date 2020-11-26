@@ -3,46 +3,51 @@ import { connect } from 'react-redux'
 import { graphql, StaticQuery } from "gatsby"
 import { navigate } from "gatsby"
 import Img from 'gatsby-image'
-import variables from "../components/layout.scss";
+//import variables from "../components/layout.scss";
 
 const backgroundColor="#FF7034"
 
+const VARIABLES =  {
+  obblack:"rgba(43,19,17, 0.4)",
+  orange:"#FF7034",
+  pink:"#FF48A5",
+  bubblegumPink:'#ff0081',
+}
 
 const styles = {
   root:{
     marginTop:0,
   },
-  image: (im) =>({
+  image: im =>({
     maxHeight:im.large?'80vh':'65vh',
     transform: im.rotate?'rotate(' + im.rotate + 'deg)':null,
     transition:'500ms all ease'
   }),
+  square: index => ({
+    paddingTop:'8vh',
+    textAlign:'center',
+    verticalAlign:'middle',
+    cursor:'pointer', 
+    marginRight:index===0?10:undefined,
+    marginLeft:index===0?undefined:10,
+    height:'20vh', 
+    width:'20vh',
+    color: index===0?VARIABLES.obblack:VARIABLES.obblack,
+    backgroundColor: index===0?VARIABLES.orange:VARIABLES.bubblegumPink,
+  }) 
 }
-
-const TEXTS = {
-  SIZE:{SV:'Storlek', EN:'Size'},
-  HEIGHT:{SV:'Höjd', EN:'Height'},
-  WIDTH:{SV:'Bredd', EN:'Width'},
-  PRICE:{SV:'Pris', EN:'Price'},
-
-}
-
-const obblack = "rgba(43,19,17, 0.4)"
-const orange = "#FF7034"
-const pink = "#FF48A5"
-
 
 
 // Two functions that can serve as imagesJsonFilter
-const Template = (props) => {
+const Template = () => {
   const [hover, setHover] = useState({})
+  useEffect(() => {
+        setHover({[0]:undefined, [1]:undefined})
+  }, [])
+
   // console.log('startIndex reset', startIndex)
   const handleMouseEnter = (index) => setHover({...hover, [index]:true})
   const handleMouseLeave = (index) => setHover({...hover, [index]:undefined})
-  const backgroundColor1 = variables.orange
-  const backgroundColor2 = variables.bubblegumPink
-  const color1 = variables.bblack
-  const color2 = variables.nblack
   const handleClick = (index) => {
       switch(index) {
         case 0:navigate('/history')
@@ -74,22 +79,11 @@ const Template = (props) => {
                   {data.allImageSharp.edges.map((it, index)=>
                         <div 
                           className={"is-6-mobile"}
-                          style={{
-                            paddingTop:'8vh',
-                            textAlign:'center',
-                            verticalAlign:'middle',
-                            cursor:'pointer', 
-                            marginRight:index===0?10:undefined,
-                            marginLeft:index===0?undefined:10,
-                            height:'20vh', 
-                            width:'20vh',
-                            color:index===0?color1:color2,
-                            backgroundColor: index===0?backgroundColor1:backgroundColor2,
-                          }} 
+                          style={styles.square(index)}
                           onClick={()=>handleClick(index)}
                         >
                           <h2>{it.node.fluid.originalName}</h2>
-                          <h4>Index : {index}</h4>
+                          <h4 style={{color:'yellow'}}>Index: {index}</h4>
                         </div>
                       )}
                   </div>

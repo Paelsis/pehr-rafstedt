@@ -1,12 +1,12 @@
 $primary-color: green;
 $orange:#FF7034;
-$bubblegumPink: #ff0081;
 $pink:#ff48a5;
 $ghost-white:#F8F8FF;
 $alice-blue:#F0F8FF; 
 $black-blue:#1a1b29;
 $nblack:#111111;
 $bblack:#2b2523;
+$bubblegum-pink: #ff0081;
 $true-black:#010203;
 $light:hsl(0, 0%, 96%);
 $ice-green:rgb(217,243,229);// #2b2523;
@@ -23,14 +23,14 @@ $ice-color:$alice-blue;
 @import "~bulma/bulma.sass";
 
 :export {
-  subheaderColor: $obblack;
-  orange: $orange;
-  bubblegumPink: $bubblegumPink;
   pink: $pink;
+  orange: $orange;
   obblack:$obblack;
   bblack: $bblack;
   nblack: $nblack;
   blackblue: $black-blue;
+  subheaderColor: $obblack;
+  bubblegumPink: $bubblegum-pink;
 }
 
 html {

@@ -7,6 +7,8 @@ import variables from "../components/layout.scss"
 const src = `https://source.unsplash.com/random/600x600`  
 const bblack = '#2b2523'
 
+
+
 export default (props) => {
   const [hover, setHover] = useState({})
   const Hline = ({leftText, rightText}) =>
