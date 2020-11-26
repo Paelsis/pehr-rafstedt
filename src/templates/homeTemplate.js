@@ -5,8 +5,6 @@ import { navigate } from "gatsby"
 import Img from 'gatsby-image'
 //import variables from "../components/layout.scss";
 
-const backgroundColor="#FF7034"
-
 const VARIABLES =  {
   obblack:"rgba(43,19,17, 0.4)",
   orange:"#FF7034",
@@ -38,14 +36,14 @@ const styles = {
   }) 
 }
 
-
 // Two functions that can serve as imagesJsonFilter
 const Template = () => {
   const [hover, setHover] = useState({})
+  /*
   useEffect(() => {
         setHover({[0]:undefined, [1]:undefined})
   }, [])
-
+  */
   // console.log('startIndex reset', startIndex)
   const handleMouseEnter = (index) => setHover({...hover, [index]:true})
   const handleMouseLeave = (index) => setHover({...hover, [index]:undefined})
@@ -84,7 +82,6 @@ const Template = () => {
                           onClick={()=>handleClick(index)}
                         >
                           <h2>{it.node.fluid.originalName}</h2>
-                          <h4 style={{color:'yellow'}}>Index: {index}</h4>
                         </div>
                       )}
                   </div>
