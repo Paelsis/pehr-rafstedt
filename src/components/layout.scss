@@ -1,18 +1,19 @@
-
-$font-stack: crimson, Work Sans;
 $primary-color: green;
 $orange:#FF7034;
-$header-background: pink;
-$ice-green:rgb(217,243,229);// #2b2523;
+$bubblegumPink: #ff0081;
+$pink:#ff48a5;
 $ghost-white:#F8F8FF;
-$light:hsl(0, 0%, 96%);
-$alice-blue:'#F0F8FF'; 
+$alice-blue:#F0F8FF; 
+$black-blue:#1a1b29;
 $nblack:#111111;
 $bblack:#2b2523;
-$obblack:rgba(43,19,17, 0.4);// #2b2523;
-$black-blue:#1a1b29; 
 $true-black:#010203;
+$light:hsl(0, 0%, 96%);
+$ice-green:rgb(217,243,229);// #2b2523;
+$obblack:rgba(43,19,17, 0.4);// #2b2523;
+$font-stack: crimson, Work Sans;
 $title-color: $orange;
+$header-background:$pink;
 $body-background-color:$true-black;
 $navbar-background-color:$true-black;
 $navbar-item-color:$orange;
@@ -23,9 +24,11 @@ $ice-color:$alice-blue;
 :export {
   subheaderColor: $obblack;
   orange: $orange;
-  pink:pink;
+  bubblegumPink: $bubblegumPink;
+  pink: $pink;
   obblack:$obblack;
   bblack: $bblack;
+  nblack: $nblack;
   blackblue: $black-blue;
 }
 

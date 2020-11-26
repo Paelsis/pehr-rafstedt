@@ -27,6 +27,10 @@ const TEXTS = {
 
 }
 
+const obblack = "rgba(43,19,17, 0.4)"
+const orange = "#FF7034"
+const pink = "#FF48A5"
+
 
 
 // Two functions that can serve as imagesJsonFilter
@@ -76,7 +80,7 @@ const Template = (props) => {
                             height:'20vh', 
                             width:'20vh',
                             color:'yellow', 
-                            backgroundColor: index===0?variables.orange:variables.pink,
+                            backgroundColor: index===0?variables.orange:variables.bubblegumPink,
                           }} 
                           onClick={()=>handleClick(index)}
                         >

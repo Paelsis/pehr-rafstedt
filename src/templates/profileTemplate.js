@@ -6,6 +6,8 @@ import OpacityText from '../components/OpacityText'
 import {axiosGet, axiosPost} from "../functions/axios"
 import { useTheme } from "@material-ui/core"
 
+
+
 const backgroundColor="#FF7034"
 const REMOTE_FILE='images.json'
 
