@@ -28,10 +28,11 @@ const styles = {
     textAlign:'center',
     verticalAlign:'middle',
     cursor:'pointer', 
-    marginRight:index===0?10:undefined,
-    marginLeft:index===0?undefined:10,
+    marginRight:index===0?15:undefined,
+    marginLeft:index===0?undefined:15,
     height:'20vh', 
     width:'20vh',
+    transform: 'rotate(-18deg)',
     color: index===0?VARIABLES.obblack:VARIABLES.obblack,
     backgroundColor: index===0?VARIABLES.orange:VARIABLES.bubblegumPink,
   }) 
