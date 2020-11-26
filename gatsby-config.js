@@ -85,7 +85,7 @@ module.exports = {
           appId: "1:487298408450:web:e668b86e11c4309972871b",
           measurementId: "G-6W70PXWKYF"
         },
-        loginPath: "/app/login",
+        loginPath: "/login",
         loginRedirectPath: "/app/profile",
         socialLogins: ["google"],
       },
