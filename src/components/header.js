@@ -63,8 +63,8 @@ const Header = ({language, title}) => {
           flexDirection:'column',
           alignItems: 'center',
           justifyContent: 'center',
-          height: 0, //150,
-          padding:0, // `1.45rem`,
+          height: 150,
+          padding:`1.45rem`,
           opacity:1.0,
           //background:hover['h1']?bblack:undefined,
           transition:'500ms all ease'

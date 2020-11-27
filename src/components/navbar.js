@@ -111,8 +111,8 @@ return(
   
   <div className={`navbar-menu navbar-end ${objActive.navBarActiveClass}`}
     onMouseEnter={()=>handleMouseEnter('nav')} 
-    onMouseLeave={()=>handleMouseLeave('nav)')}
-    style={{fontWeight:100, fontSize:14, opacity:hover.nav?0.9:0.1}}
+    onMouseLeave={()=>handleMouseLeave('nav')}
+    style={{fontWeight:100, fontSize:14, opacity:hover.nav?0.7:0.7}}
   >
     <Link to="/" className="navbar-item">
       {TEXTS.HOME[language]}

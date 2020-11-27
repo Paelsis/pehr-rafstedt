@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from "react"
 import { connect } from 'react-redux'
-import { graphql, StaticQuery, navigate} from "gatsby"
+import { graphql, StaticQuery, navigate } from "gatsby"
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Img from 'gatsby-image'
 import { ContactlessOutlined } from "@material-ui/icons";
 import {edgesSelected, imagesJsonYear, imagesJsonOlderThanYear} from '../components/edgesSelected'
-import variables from "../components/layout.scss" 
 
 
 
@@ -17,7 +16,6 @@ const offset = 12
 const styles = {
   root:{
     marginTop:'0.45rem',
-    color:variables.orange
   },
   image: (im) =>({
     maxHeight:im.large?'80vh':'65vh',
@@ -46,6 +44,10 @@ const Template = (props) => {
   // console.log('startIndex reset', startIndex)
   const handleMouseEnter = (name) => setHover({...hover, [name]:true})
   const handleMouseLeave = (name) => setHover({...hover, [name]:undefined})
+  const handleNavigate = e => {
+    e.stopPropagation()
+    navigate('/')
+  }
   // const checkboxOpen = (ix) => setList([...edges.slice(0, ix), {...edges[ix], open:edges[ix].open?undefined:true}, ...edges.slice(ix + 1)])
   return(
   <StaticQuery
@@ -68,36 +70,37 @@ const Template = (props) => {
             const filterFunc = props.olderThan?imagesJsonOlderThanYear:imagesJsonYear
             const edges = edgesSelected(data.allImageSharp.edges, year, filterFunc)
 
-
             const edgesRange =  edges.length <= startIndex?edges
             :edges.length >0?edges.find((it, index) => (index >= startIndex && index < startIndex + offset))?edges
             :[...edges.slice(0, startIndex), {...edges[startIndex], open:true}, ...edges.slice(startIndex + 1)]:[]
-            const previous = (e) => {
-              e.stopPropagation()
+            const previous = () => {
               const newStartIndex = Math.max(startIndex-offset, 0)
               setStartIndex(newStartIndex)
               setOpen(newStartIndex)
             }
-            const next = (e) => {
-              e.stopPropagation()
+            const next = () => {
               const newStartIndex = (startIndex + offset <= edges.length)?startIndex + offset: startIndex
               setStartIndex(newStartIndex)
               setOpen(newStartIndex)
             }
-            const handleClick = (e) => {e.stopPropagation(); navigate('/')}
+            const handleNavigate = e => {
+              e.stopPropagation()
+              navigate('/')
+            }
             const openMin = Math.min(open, edgesRange.length-1)
             const fluid = edgesRange.length > 0?edgesRange[openMin].node.fluid:undefined
             const imageJson = edgesRange.length > 0?edgesRange[openMin].imageJson:undefined
             return (
               <>
               {fluid?
-                  <div style={styles.root} className="columns is-centered" onClick={handleClick}>
+                  <div style={styles.root} className="columns is-centered" onClick={handleNavigate}>
                     <div className={hover['bigPic']?"column is-full-mobile is-one-third-tablet is-one-quarter-desktop":"column is-full-mobile is-one-third-tablet is-one-third-desktop"}>
                       <div className="columns is-centered is-multiline is-mobile">
                         {
                           edgesRange.map((it, ix)=>
                           (ix >= startIndex && ix < startIndex + offset) ?
-                            <div className={"column is-2-mobile is-one-third-tablet"} style={{cursor:'pointer'}} onClick={(e)=>{e.stopPropagation(); setOpen(ix)}} >
+                            <div className={"column is-2-mobile is-one-third-tablet"} style={{cursor:'pointer'}} onClick={(e)=>{e.stopPropagation(); setOpen(ix)}} 
+                            >
                                 <Img fluid={it.node.fluid} backgroundColor={backgroundColor} />
                             </div>  
                           :
@@ -108,14 +111,14 @@ const Template = (props) => {
                       {edgesRange.length > offset?
                         <div className="buttons" >
                             {startIndex!==0?
-                              <div className="button is-light" onClick={previous} style={{backgroundColor:variables.orange, cursor:'pointer'}}>
+                              <div className="button is-light" onClick={previous} style={{cursor:'pointer'}}>
                                 <NavigateBeforeIcon />
                               </div>
                             :
                               null  
                             } 
                             {edgesRange.length - startIndex > offset?
-                              <div className="button is-light" onClick={next} style={{backgroundColor:variables.orange, cursor:'pointer'}}>
+                              <div className="button is-light" onClick={next}>
                                 <NavigateNextIcon />
                               </div>
                             :
@@ -126,7 +129,11 @@ const Template = (props) => {
                     </div>
                     <div className={hover['bigPic']?"column is-offset-0":"column is-offset-1"} onMouseEnter={()=>handleMouseEnter('bigPic')} onMouseLeave={()=>handleMouseLeave('bigPic')}>
                       <figure>
-                        <Img fluid={fluid} backgroundColor={backgroundColor} style={{width:'auto', objectFit:'cover'}}/>
+                        <div style={{position:'relative'}}>
+                          <Img fluid={fluid} backgroundColor={backgroundColor} style={{width:'auto', objectFit:'cover'}}/>
+                          <div style={{position:'absolute', opacity:0.4, bottom:4, right:8, fontSize:'xx-small', color:'black'}}>Photo:{imageJson.photo?imageJson.photo:'Magnus Jönsson'}</div>  
+                        </div>
+
                         {imageJson?
                           <figcaption className="has-text-dark" style={{opacity:!imageJson.hover || hover['bigPic']?1.0:0, transition:'1500ms all ease', fontWeight:100}}>
                             <small style={{fontWeight:100}}>

@@ -9,14 +9,12 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { isLoggedIn } from "../services/auth"
-import Header from "./header"
-import Navbar from "./navbar"
 import "./layout.scss"
 
 const Layout = ({location, children }) => {
   const loggedIn = isLoggedIn()
   const data = useStaticQuery(graphql`
-  query SiteTitleQuery {
+  query SiteTitleQuery22 {
     site {
       siteMetadata {
         title
@@ -29,9 +27,6 @@ const Layout = ({location, children }) => {
   const galleries = data.site.siteMetadata.galleries
   return (
     <>
-    /*
-      <Header title={title} />
-      <Navbar loggedIn={loggedIn} galleries={galleries} />
       <div class="container is-widescreen">
         <h1 style={{color:'white'}}>{location?location.pathname:null}</h1>
         <main style={{paddingLeft:10, paddingRight:10}}>{children}</main>
