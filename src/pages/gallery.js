@@ -13,13 +13,13 @@ export default ({galleries, location}) => {
     console.log('year', year, 'olderThan', olderThan)
     const loggedIn = isLoggedIn()
     return(
-    <Layout>
+    <div>
         <SEO title={"Gallery " + year} />
-        <div style={{position:'relative', top:-10, textAlign:'center'}}>
+        <div style={{position:'relative', paddingTop:100, textAlign:'center'}}>
             <span style={{fontFamily:'Roboto', fontSize:'2.4em', color:'hsla(43, 36%, 85%, 1)'}}>{olderThan?"Older than ":""} {year}</span>
         </div> 
         <Template year={year} olderThan={olderThan} />
-    </Layout>
+    </div>
     )
 }
 

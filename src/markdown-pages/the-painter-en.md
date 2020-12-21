@@ -6,7 +6,8 @@ title: "ABOUT MYSELF"
 src: "https://source.unsplash.com/random/600x600"
 language: "EN"
 ---
-I'm self-taught. This is my 4th exhibition. Constantly searching for flow. My pictures are most of all a product of this applicant. I work with form and color in intuitive compositions.
+Im autodidakt. Constantly searching for flow, my paintings are most of all a product of this applicant. 
+I work with form and color in intuitive compositions. Before my 4th. exhibition at Hälsans Hus in Lund 2018. 
 Before this exhibition in Hälsans Hus, I asked Magne, who I know from Tango, if he wanted to write something, about my pictures, which he saw a part of, on 2 occasions, especially my production from 2017 and 2018. I know from conversation that he is interested in image creation. not only in his professional role, as a psychologist and psychodynamic psychotherapist with an interest in the unconscious soul life and how this can unfold in works of art, but also from a more philosophical perspective. I thought it was nice that he wanted to spend some time reflecting on my pictures. It is of course possible to look at pictures without this text.
 
 *Review made by Magne Andreas Ness* 

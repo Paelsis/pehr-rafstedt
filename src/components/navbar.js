@@ -87,7 +87,7 @@ return(
 
 <nav 
   class="navbar is-full is-transparent"  role="navigation" aria-label="main navigation"
-  style={{color:variables.obblack, opacity:hover?0.9:0.1}}
+  style={{color:variables.obblack, opacity:hover?0.8:0.5}}
 >
   <div
     className={`navbar-burger burger ${objActive.navBarActiveClass}`}

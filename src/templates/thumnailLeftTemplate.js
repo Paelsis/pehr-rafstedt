@@ -4,14 +4,14 @@ import { graphql, StaticQuery, navigate } from "gatsby"
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Img from 'gatsby-image'
-import { ContactlessOutlined } from "@material-ui/icons";
+import { ContactlessOutlined, ContactsOutlined } from "@material-ui/icons";
 import {edgesSelected, imagesJsonYear, imagesJsonOlderThanYear} from '../components/edgesSelected'
 
 
 
 const backgroundColor="#FF7034"
 
-const offset = 12
+const offset = 8
 
 const styles = {
   root:{
@@ -42,7 +42,7 @@ const Template = (props) => {
     setStartIndex(0)
   }, [props.year, props.olderThan])
   // console.log('startIndex reset', startIndex)
-  const handleMouseEnter = (name) => setHover({...hover, [name]:true})
+  const handleMouseEnter = (name) => setHover({...hover, [name]:undefined /*true*/})
   const handleMouseLeave = (name) => setHover({...hover, [name]:undefined})
   const handleNavigate = e => {
     e.stopPropagation()
@@ -68,85 +68,107 @@ const Template = (props) => {
           render={data => {
             const year = props.year?props.year:undefined
             const filterFunc = props.olderThan?imagesJsonOlderThanYear:imagesJsonYear
-            const edges = edgesSelected(data.allImageSharp.edges, year, filterFunc)
+            // const edges = edgesSelected(data.allImageSharp.edges, year, filterFunc)
+            const edges = data.allImageSharp.edges
 
-            const edgesRange =  edges.length <= startIndex?edges
-            :edges.length >0?edges.find((it, index) => (index >= startIndex && index < startIndex + offset))?edges
-            :[...edges.slice(0, startIndex), {...edges[startIndex], open:true}, ...edges.slice(startIndex + 1)]:[]
+            const edgesThumbnails =  edges.length <= offset?edges
+            :edges.length > 0?edges.find((it, index) => (index >= startIndex && index < startIndex + offset))?edges
+            :[...edges.slice(0, startIndex), {...edges[startIndex], open:true}, ...edges.slice(startIndex + 1)]
+            :[]
+
             const previous = () => {
               const newStartIndex = Math.max(startIndex-offset, 0)
               setStartIndex(newStartIndex)
               setOpen(newStartIndex)
             }
+
             const next = () => {
               const newStartIndex = (startIndex + offset <= edges.length)?startIndex + offset: startIndex
               setStartIndex(newStartIndex)
               setOpen(newStartIndex)
             }
+
             const handleNavigate = e => {
               e.stopPropagation()
               navigate('/')
             }
-            const openMin = Math.min(open, edgesRange.length-1)
-            const fluid = edgesRange.length > 0?edgesRange[openMin].node.fluid:undefined
-            const imageJson = edgesRange.length > 0?edgesRange[openMin].imageJson:undefined
+            const openMin = Math.min(open, edgesThumbnails.length-1)
+            const fluid = edgesThumbnails.length > 0?edgesThumbnails[openMin].node.fluid:undefined
+            const imageJson = edgesThumbnails.length > 0?edgesThumbnails[openMin].imageJson:undefined
+
+            console.log('length:', edgesThumbnails.length, 'openMin', openMin, 'fluid:', fluid, 'imageJson', imageJson)
+            
             return (
               <>
-              {fluid?
-                  <div style={styles.root} className="columns is-centered" onClick={handleNavigate}>
-                    <div className={hover['bigPic']?"column is-full-mobile is-one-third-tablet is-one-quarter-desktop":"column is-full-mobile is-one-third-tablet is-one-third-desktop"}>
-                      <div className="columns is-centered is-multiline is-mobile">
-                        {
-                          edgesRange.map((it, ix)=>
-                          (ix >= startIndex && ix < startIndex + offset) ?
-                            <div className={"column is-2-mobile is-one-third-tablet"} style={{cursor:'pointer'}} onClick={(e)=>{e.stopPropagation(); setOpen(ix)}} 
-                            >
-                                <Img fluid={it.node.fluid} backgroundColor={backgroundColor} />
-                            </div>  
-                          :
-                            null  
-                          )
-                        }
-                      </div>
-                      {edgesRange.length > offset?
-                        <div className="buttons" >
-                            {startIndex!==0?
-                              <div className="button is-light" onClick={previous} style={{cursor:'pointer'}}>
-                                <NavigateBeforeIcon />
+                <div style={styles.root} >
+                  {fluid?
+                    <div className="columns is-centered" onClick={handleNavigate}>
+                        <div className={"column is-12-mobile is-two-thirds-tablet is-half-widescreen columns is-centered"}>
+                            <figure className={hover["column"]} onMouseEnter={()=>handleMouseEnter('bigPic')} onMouseLeave={()=>handleMouseLeave('bigPic')}>
+                              <div style={{position:'relative'}}>
+                                <Img className = "image" fluid={fluid} backgroundColor={backgroundColor} style={{position:'relative', objectFit: 'cover', width:'100vh', height:'50vh', marginLeft:'auto', marginRight:'auto'}}/>
+                                <div style={{position:'absolute', opacity:0.4, bottom:4, right:8, fontSize:'xx-small', color:'white'}}>
+                                  Photo:{imageJson?imageJson.photo?imageJson.photo:'Pehr Rafstedt':'Pehr Rafstedt'}
+                                </div>  
                               </div>
-                            :
-                              null  
-                            } 
-                            {edgesRange.length - startIndex > offset?
-                              <div className="button is-light" onClick={next}>
-                                <NavigateNextIcon />
-                              </div>
-                            :
-                              null  
-                            }          
-                        </div>
-                      :null}
-                    </div>
-                    <div className={hover['bigPic']?"column is-offset-0":"column is-offset-1"} onMouseEnter={()=>handleMouseEnter('bigPic')} onMouseLeave={()=>handleMouseLeave('bigPic')}>
-                      <figure>
-                        <div style={{position:'relative'}}>
-                          <Img fluid={fluid} backgroundColor={backgroundColor} style={{width:'auto', objectFit:'cover'}}/>
-                          <div style={{position:'absolute', opacity:0.4, bottom:4, right:8, fontSize:'xx-small', color:'black'}}>Photo:{imageJson.photo?imageJson.photo:'Magnus Jönsson'}</div>  
-                        </div>
+                              <figcaption className="has-text-light" style={{opacity:1.0}}>
+                                <small style={{fontWeight:100}}>
+                                {imageJson?imageJson.name?imageJson.name:"No text":"No text in imageJson"}
+                                </small>
+                                <br />
+                                <small style={{fontWeight:100}}>{TEXTS.SIZE[props.language]}:{imageJson?imageJson.size:0}&nbsp;{TEXTS.PRICE[props.language]}:{imageJson?imageJson.price:0}</small>
+                              </figcaption>
+                            </figure>
+                        </div>  
+                    </div>  
+                  :
+                     <h2>No open image</h2>
+                  }
 
-                        {imageJson?
-                          <figcaption className="has-text-dark" style={{opacity:!imageJson.hover || hover['bigPic']?1.0:0, transition:'1500ms all ease', fontWeight:100}}>
-                            <small style={{fontWeight:100}}>
-                            {imageJson.name?imageJson.name:"No text"}
-                            </small>
-                            <br />
-                            <small style={{fontWeight:100}}>{TEXTS.SIZE[props.language]}:{imageJson.size}&nbsp;{TEXTS.PRICE[props.language]}:{imageJson.price}</small>
-                          </figcaption>
-                        :null}
-                      </figure>
+                  {edgesThumbnails.length > 0?
+                    <div className={"columns is-centered"}>
+                      <div className={"column is-two-thirds-tablet is-two-thirds-tablet is-half-widescreen columns is-left"}>
+                          <div className={"column is-hidden-mobile is-2-tablet is-one-third-widescreen"} style={{cursor:'pointer'}}>
+                            <Img className = "image is-96x96"  objectFit="cover" objectPosition="50% 50%" fluid={fluid} backgroundColor={backgroundColor} />
+                          </div>  
+      1                   <div className="column is-offset-2 is-12-mobile is-10-tablet is-10-desktop is-half-widescreen columns is-mobile is-centered is-multiline ">
+                            {edgesThumbnails.map((it, ix)=>
+                              (ix >= startIndex && ix < startIndex + offset) ?
+                                <div className={"column is-3-mobile is-3-tablet"} style={{cursor:'pointer'}} onClick={(e)=>{e.stopPropagation(); setOpen(ix)}}>
+                                    <Img className = "image is-96x96"  objectFit="cover" objectPosition="50% 50%" fluid={it.node.fluid} backgroundColor={backgroundColor} />
+                                </div>  
+                              :
+                                null  
+                            )}
+                            <div className="column is-12 columns is-centered">
+                                {edgesThumbnails.length > offset?
+                                  <div className="buttons" >
+                                      {startIndex!==0?
+                                        <div className="button is-light is-small" onClick={previous} style={{cursor:'pointer'}}>
+                                          <NavigateBeforeIcon />
+                                        </div>
+                                      :
+                                        null  
+                                      } 
+                                      {edgesThumbnails.length - startIndex > offset?
+                                        <div className="button is-light is-small" onClick={next}>
+                                          <NavigateNextIcon />
+                                        </div>
+                                      :
+                                        null  
+                                      }          
+                                  </div>
+                                :null}
+                            </div>
+                          </div>  
+                        </div>  
                     </div>
-                  </div>
-              :<h2>No pictures from this period</h2>}
+                    :
+                      <h2>No images in list</h2>
+
+                  }  
+                  
+                </div>
               </>
               )
             }}
