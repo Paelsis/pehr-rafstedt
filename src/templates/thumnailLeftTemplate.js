@@ -103,7 +103,7 @@ const Template = (props) => {
                 <div style={styles.root} >
                   {fluid?
                     <div className="columns is-centered" onClick={handleNavigate}>
-                        <div className={"column is-12-mobile is-two-thirds-tablet is-half-widescreen columns is-centered"}>
+                        <div className={"column is-12-mobile is-10-tablet is-9-desktop is-8-widescreen columns is-centered"}>
                             <figure className={hover["column"]} onMouseEnter={()=>handleMouseEnter('bigPic')} onMouseLeave={()=>handleMouseLeave('bigPic')}>
                               <div style={{position:'relative'}}>
                                 <Img className = "image" fluid={fluid} backgroundColor={backgroundColor} style={{position:'relative', objectFit: 'cover', width:'100vh', height:'50vh', marginLeft:'auto', marginRight:'auto'}}/>
@@ -126,15 +126,21 @@ const Template = (props) => {
                   }
 
                   {edgesThumbnails.length > 0?
-                    <div className={"columns is-centered"}>
-                      <div className={"column is-two-thirds-tablet is-two-thirds-tablet is-half-widescreen columns is-left"}>
-                          <div className={"column is-hidden-mobile is-2-tablet is-one-third-widescreen"} style={{cursor:'pointer'}}>
-                            <Img className = "image is-96x96"  objectFit="cover" objectPosition="50% 50%" fluid={fluid} backgroundColor={backgroundColor} />
+                    <div className={"columns is-centered is-multiline"}>
+                        <div className={"column is-12-mobile is-12-tablet is-10-desktop is-6-widescreen columns is-left"}>
+                          <div className={"column is-hidden-mobile is-6-tablet is-5-desktop is-half-widescreen columns"} style={{cursor:'pointer'}}>
+                            <div className={"column is-hidden-mobile is-4-tablet"} style={{paddingTop:0, cursor:'pointer', color:'white'}}>
+                              <Img className = "image is-96x96"  objectFit="cover" objectPosition="50% 50%" fluid={fluid} backgroundColor={backgroundColor} />
+                            </div>  
+                            <div className={"column is-hidden-mobile is-8-tablet"} style={{paddingTop:0, cursor:'pointer', color:'white', fontSize:'x-small'}}>
+                              Abcdefgh Abcdefgh  Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh 
+                              Abcdefgh Abcdefgh  Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh Abcdefgh 
+                            </div>  
                           </div>  
-      1                   <div className="column is-offset-2 is-12-mobile is-10-tablet is-10-desktop is-half-widescreen columns is-mobile is-centered is-multiline ">
+      1                   <div className="column is-fullscreen-mobile is-6-tablet is-7-desktop is-half-widescreen columns is-mobile is-right is-multiline">
                             {edgesThumbnails.map((it, ix)=>
                               (ix >= startIndex && ix < startIndex + offset) ?
-                                <div className={"column is-3-mobile is-3-tablet"} style={{cursor:'pointer'}} onClick={(e)=>{e.stopPropagation(); setOpen(ix)}}>
+                                <div className={"column is-3"} style={{cursor:'pointer', paddingTop:0}} onClick={(e)=>{e.stopPropagation(); setOpen(ix)}}>
                                     <Img className = "image is-96x96"  objectFit="cover" objectPosition="50% 50%" fluid={it.node.fluid} backgroundColor={backgroundColor} />
                                 </div>  
                               :
@@ -144,14 +150,14 @@ const Template = (props) => {
                                 {edgesThumbnails.length > offset?
                                   <div className="buttons" >
                                       {startIndex!==0?
-                                        <div className="button is-light is-small" onClick={previous} style={{cursor:'pointer'}}>
+                                        <div className="button is-dark is-small" onClick={previous} style={{cursor:'pointer'}}>
                                           <NavigateBeforeIcon />
                                         </div>
                                       :
                                         null  
                                       } 
                                       {edgesThumbnails.length - startIndex > offset?
-                                        <div className="button is-light is-small" onClick={next}>
+                                        <div className="button is-dark is-small" onClick={next}>
                                           <NavigateNextIcon />
                                         </div>
                                       :
